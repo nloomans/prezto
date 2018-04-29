@@ -58,6 +58,15 @@ path=(
   $path
 )
 
+# Add globally installed npm packages to the path
+if [ -d ~/.yarn/bin ]; then
+  # `yarn global bin` is really show, so we hardcode the bin location
+  path=(
+    $HOME/.yarn/bin
+    $path
+  )
+fi
+
 #
 # Less
 #
