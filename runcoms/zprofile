@@ -17,8 +17,19 @@ fi
 # Editors
 #
 
-export EDITOR='vim'
-export VISUAL='vim'
+# Set the editor to vscode if using the integrated vscode terminal
+# The VSCODE env flag should be added manually in the vscode settings
+if [[ -n $VSCODE ]]; then
+  # `code -w` opens the file and waits for it to close, allowing commands like
+  # git commit to use it.
+  export VISUAL='code -w'
+else
+  # Just use vim otherwise, since we don't want to open vscode if we're not
+  # already inside it.
+  export VISUAL='vim'
+fi
+
+export EDITOR="$VISUAL"
 export PAGER='less'
 
 #
